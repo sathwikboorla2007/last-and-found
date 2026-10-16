@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 const userSchema=new mongoose.Schema({
-    name:{
+    userName:{
         type:String,
         required:true
     },
@@ -23,6 +23,10 @@ const userSchema=new mongoose.Schema({
         default:"user"
     },
     password:{
+        type:String,
+        required:true
+    },
+    rollNo:{
         type:String,
         required:true
     }
