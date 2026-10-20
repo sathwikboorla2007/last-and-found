@@ -1,6 +1,8 @@
 import express from "express";
 import userRouter from "./routes/user.route.js";
-const app=express();
+
+import app from "../index.js";
+
 app.use(express.json());
 app.get("/",(req,res)=>{
     res.send("hello");
