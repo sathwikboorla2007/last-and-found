@@ -96,8 +96,19 @@ const updateuserName=asyncHandler(async(req,res)=>{
         
         return res.status(200).json(new ApiResponse(200,user,"password updated successfully"));
     });
-
-export {userRegister,userLogin,userLogout,updateuserName,updatePassword};
+const updatePhoneNumber=asyncHandler(async(req,res)=>{
+    const {phoneNumber}=req.body;
+    if(!phoneNumber){
+        throw new ApiError(400,"phone number is required");
+    }   
+    const user=await User.findByIdAndUpdate(req.user?._id,{
+        $set: {
+            phoneNumber     
+    }
+    },{new:true}).select("-password");
+    return res.status(200).json(new ApiResponse(200,user,"phone number updated successfully"));
+} );
+export {userRegister,userLogin,userLogout,updateuserName,updatePassword,updatePhoneNumber};
 
 
 
